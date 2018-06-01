@@ -181,7 +181,10 @@ public class CameraActivity extends Activity implements View.OnClickListener {
         cameraPreview.takePhoto(new Camera.PictureCallback() {
             @Override
             public void onPictureTaken(final byte[] data, Camera camera) {
+                //停止预览
+                 camera.stopPreview();
                 //子线程处理图片，防止ANR
+               
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
